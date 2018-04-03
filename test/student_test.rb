@@ -1,16 +1,28 @@
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require Student
+require './lib/student.rb'
 
 class StudentTest < Minitest::Test
-
   def test_it_exists
-    student = Student.new
+    student = Student.new('Meager')
     assert_instance_of Student, student
   end
 
-  # test it has a name
-  # test it has a laptop
-  # test it has cookies
+  def test_student_has_a_name
+    student = Student.new('MeagerFIndings')
+    assert_equal 'MeagerFIndings', student.name
+  end
+
+  def test_student_has_a_laptop
+    student = Student.new('Tester')
+    student.add_laptop('laptop test')
+    assert_equal 'laptop test', student.laptop
+  end
+
+  def test_student_has_cookies
+    student = Student.new('Tester')
+    student.add_cookie('funfetti')
+    assert_equal 'funfetti', student.cookie
+  end
 end
